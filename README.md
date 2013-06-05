@@ -1,4 +1,4 @@
-LAMPcliTools is a project that aims at sharing custom little tools that can help in everyday programming in Command Line Programming in a LAMP environment.
+LAMPcliTools is a project that aims at sharing custom little tools that can help in everyday Command Line Programming on a LAMP environment.
 
 Feel free to write me to share any tool you may have needed and developed.
 
