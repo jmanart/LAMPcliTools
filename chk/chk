@@ -1,0 +1,15 @@
+#!/bin/bash
+while getopts "s" opt; do
+  case $opt in
+    s)
+     SVN=true;
+      ;;
+    \?)
+      echo "Invalid option: -$OPTARG" >&2
+      ;;
+  esac
+done
+if [ $SVN ];
+	 then echo 'SVN CHECK'; for i in $(svn st | sed 's/^[A,M,?,!] *//');do php5 -l $i;done
+else echo 'ALL CHECK'; for i in $(find . -name "*.php" -type f|grep -v svn);do php5 -l $i;done
+fi
