@@ -1,4 +1,21 @@
 #!/bin/bash
+##########################################################################################
+## This script is part of LAMPcliTools (https://github.com/jmanart/LAMPcliTools)
+## It is released under GNU v3 License
+## Please, comment any modifications / enhancements, we can all enjoy them, you will be
+##	given credit ;)
+##########################################################################################
+
+CHECK_CMD="php -l"
+CHECK_EXT=".php"
+
+options() {
+	echo "USAGE: chk [options]"
+	echo "VALID OPTIONS"
+	echo " -s       Performs check only on changed files according to svn st"
+	exit 1
+}
+
 while getopts "s" opt; do
   case $opt in
     s)
@@ -6,10 +23,12 @@ while getopts "s" opt; do
       ;;
     \?)
       echo "Invalid option: -$OPTARG" >&2
+      options
       ;;
   esac
 done
 if [ $SVN ];
-	 then echo 'SVN CHECK'; for i in $(svn st | sed 's/^[A,M,?,!] *//');do php5 -l $i;done
-else echo 'ALL CHECK'; for i in $(find . -name "*.php" -type f|grep -v svn);do php5 -l $i;done
+	 then echo 'SVN CHECK'; for i in $(svn st | sed 's/^[A,M,?,!] *//' | grep -i $CHECK_EXT);do $CHECK_CMD $i;done
+	 
+else echo 'ALL CHECK'; for i in $(find . -name "*$CHECK_EXT" -type f|grep -v svn);do $CHECK_CMD $i;done
 fi
