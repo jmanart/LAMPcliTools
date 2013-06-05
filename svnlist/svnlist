@@ -1,0 +1,34 @@
+#!/bin/bash
+##########################################################################################
+## This script is part of LAMPcliTools (https://github.com/jmanart/LAMPcliTools)
+## It is released under GNU v3 License
+## Please, comment any modifications / enhancements, we can all enjoy them, you will be
+##	given credit ;)
+##########################################################################################
+
+
+# Text color variables
+txtund=$(tput sgr 0 1)          # Underline
+txtbld=$(tput bold)             # Bold
+bldred=${txtbld}$(tput setaf 1) #  red
+bldblu=${txtbld}$(tput setaf 4) #  blue
+bldwht=${txtbld}$(tput setaf 7) #  white
+txtrst=$(tput sgr0)             # Reset
+info=${bldwht}*${txtrst}        # Feedback
+pass=${bldblu}*${txtrst}
+warn=${bldred}*${txtrst}
+ques=${bldblu}?${txtrst}
+
+#GET URL
+URL=$(svn list $(svn info | grep '^URL.*' | sed 's/^URL: //'))
+
+#LIST FILES
+
+for i in $URL;
+do
+	if [ -d $i -o -f $i ]; then 
+		echo "$(tput setaf 2)$i$(tput sgr0)";
+	else 
+		echo "$(tput setaf 1)$i$(tput sgr0)";
+	fi;
+done
