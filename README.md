@@ -6,6 +6,8 @@ Parts
 =====
 chk - quick syntax checking, faster mode checks only svn changed files (pre-commiting)
 
+svnlist - color checking server files vs local
+
 License
 =======
 see LICENSE file
