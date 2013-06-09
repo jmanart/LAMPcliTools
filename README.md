@@ -8,6 +8,8 @@ chk - quick syntax checking, faster mode checks only svn changed files (pre-comm
 
 svnlist - color checking server files vs local
 
+sqlComp - utility to compare tables
+
 License
 =======
 see LICENSE file
