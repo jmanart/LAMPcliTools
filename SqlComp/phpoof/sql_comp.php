@@ -7,7 +7,7 @@ use php\util\Hashtable;
 use php\ConsoleApp;
 use php\sql\ConnectionFactory;
 
-class QueryCompBuilder extends ImawebConsoleApp {
+class QueryCompBuilder extends ConsoleApp {
 	protected $foreground_colors = array(
 			'black' 		=>'0;30', 'dark_gray' 		=>'1;30',
 			'blue' 			=>'0;34', 'light_blue' 		=>'1;34',
